@@ -37,7 +37,7 @@ h1{font-size:1.45rem;margin:0 0 4px;letter-spacing:-.02em}
   <div class="card"><div class="lbl">Last hour</div><div class="num" id="hour">—</div></div>
   <div class="card"><div class="lbl">All time</div><div class="num" id="total">—</div></div>
   <div class="card"><div class="lbl">App Store redirects</div><div class="num" id="redir">—</div></div>
-  <div class="card wide"><div class="lbl">By source</div><div id="sources"></div></div>
+  <div class="card wide"><div class="lbl">By source</div><h3>Bio vs story</h3><div id="placement"></div><h3>Source</h3><div id="sources"></div></div>
   <div class="card wide"><div class="lbl">Clicks</div><div id="clicks"></div></div>
   <div class="card wide"><div class="lbl">Last 24 hours</div><div id="hours"></div></div>
 </div>
@@ -76,7 +76,7 @@ async function refresh(){
   var hk=hourKeys(24);
   var pe=partsET();
   var todayStr=pe.year+pe.month+pe.day;
-  var keys=['vis','redir','clk_copy','clk_android'].concat(srcs.map(function(s){return 'src_'+s})).concat(hk.map(function(h){return h.key}));
+  var keys=['vis','redir','clk_copy','clk_android','pl_bio','pl_story'].concat(srcs.map(function(s){return 'src_'+s})).concat(hk.map(function(h){return h.key}));
   var vals={};
   for(var i=0;i<keys.length;i+=8){
     var batch=keys.slice(i,i+8);
@@ -89,7 +89,7 @@ async function refresh(){
   document.getElementById('today').textContent=today;
   document.getElementById('hour').textContent=lastHour;
   document.getElementById('total').textContent=vals.vis||0;
-  document.getElementById('redir').textContent=vals.redir||0;
+  document.getElementById('redir').textContent=vals.redir||0;var _pe=document.getElementById('placement');if(_pe)_pe.innerHTML='<div class="row"><span>Bio link (?s=bio)</span><b>'+(vals.pl_bio||0)+'</b></div><div class="row"><span>Story / original link (since 11:20 AM)</span><b>'+(vals.pl_story||0)+'</b></div>';
   var maxS=Math.max(1); srcs.forEach(function(s){maxS=Math.max(maxS, vals['src_'+s]||0)});
   document.getElementById('sources').innerHTML=srcs.map(function(s){
     var n=vals['src_'+s]||0;
