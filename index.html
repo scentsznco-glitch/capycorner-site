@@ -45,12 +45,12 @@ var inApp=/musical_ly|BytedanceWebview|TikTok|Instagram|FBAN|FBAV|Snapchat|Twitt
 var ios=/iPhone|iPad|iPod/i.test(ua);
 var willRedirect=!inApp&&ios&&!/[?&]stay/.test(location.search);
 var src=_src(ua,inApp,ios);
-_hit(_pfx+'v');
-_hit(_pfx+'s_'+src);
-_hit(_pfx+'h'+_hk());
-if(willRedirect)_hit(_pfx+'r');
+_hit(_pfx+'vis');
+_hit(_pfx+'src_'+src);
+_hit(_pfx+'hr'+_hk());
+if(willRedirect)_hit(_pfx+'redir');
 if(willRedirect){location.replace("https://apps.apple.com/app/id6822118686");}
 if(inApp){document.getElementById("dl").style.display="none";document.getElementById("inapp").style.display="block";document.body.classList.add("ia");if(!ios){document.getElementById("android").style.display="inline-block";}}
-document.getElementById("copy").onclick=function(e){e.preventDefault();_hit(_pfx+'c_copy');var u="https://apps.apple.com/app/id6822118686";(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){e.target.textContent="link copied!"},function(){prompt("Copy this link:",u)});};
-var _abtn=document.getElementById("android");if(_abtn)_abtn.addEventListener("click",function(){_hit(_pfx+"c_android")});
+document.getElementById("copy").onclick=function(e){e.preventDefault();_hit(_pfx+'clk_copy');var u="https://apps.apple.com/app/id6822118686";(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){e.target.textContent="link copied!"},function(){prompt("Copy this link:",u)});};
+var _abtn=document.getElementById("android");if(_abtn)_abtn.addEventListener("click",function(){_hit(_pfx+'clk_android')});
 })();</script>

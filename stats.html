@@ -59,7 +59,7 @@ function hourKeys(n){
   var out=[], now=Date.now();
   for(var i=0;i<n;i++){
     var p=partsET(new Date(now-i*3600e3));
-    out.push({key:'h'+p.year+p.month+p.day+p.hour, label:p.month+'/'+p.day+' '+p.hour+':00', day:p.year+p.month+p.day});
+    out.push({key:'hr'+p.year+p.month+p.day+p.hour, label:p.month+'/'+p.day+' '+p.hour+':00', day:p.year+p.month+p.day});
   }
   return out;
 }
@@ -76,7 +76,7 @@ async function refresh(){
   var hk=hourKeys(24);
   var pe=partsET();
   var todayStr=pe.year+pe.month+pe.day;
-  var keys=['v','r','c_copy','c_android'].concat(srcs.map(function(s){return 's_'+s})).concat(hk.map(function(h){return h.key}));
+  var keys=['vis','redir','clk_copy','clk_android'].concat(srcs.map(function(s){return 'src_'+s})).concat(hk.map(function(h){return h.key}));
   var vals={};
   for(var i=0;i<keys.length;i+=8){
     var batch=keys.slice(i,i+8);
@@ -88,17 +88,17 @@ async function refresh(){
   hk.forEach(function(h){ if(h.day===todayStr) today+=vals[h.key]||0 });
   document.getElementById('today').textContent=today;
   document.getElementById('hour').textContent=lastHour;
-  document.getElementById('total').textContent=vals.v||0;
-  document.getElementById('redir').textContent=vals.r||0;
-  var maxS=Math.max(1); srcs.forEach(function(s){maxS=Math.max(maxS, vals['s_'+s]||0)});
+  document.getElementById('total').textContent=vals.vis||0;
+  document.getElementById('redir').textContent=vals.redir||0;
+  var maxS=Math.max(1); srcs.forEach(function(s){maxS=Math.max(maxS, vals['src_'+s]||0)});
   document.getElementById('sources').innerHTML=srcs.map(function(s){
-    var n=vals['s_'+s]||0;
+    var n=vals['src_'+s]||0;
     var label={tiktok:'TikTok in-app',instagram:'Instagram in-app',inapp:'Other in-app',ios:'iPhone/iPad Safari',android:'Android',desktop:'Desktop'}[s];
     return '<div class="row"><span>'+label+'</span><b>'+n+'</b></div><div class="bar"><i style="width:'+(100*n/maxS)+'%"></i></div>';
   }).join('');
   document.getElementById('clicks').innerHTML=
-    '<div class="row"><span>Copy link</span><b>'+(vals.c_copy||0)+'</b></div>'+
-    '<div class="row"><span>Android open button</span><b>'+(vals.c_android||0)+'</b></div>';
+    '<div class="row"><span>Copy link</span><b>'+(vals.clk_copy||0)+'</b></div>'+
+    '<div class="row"><span>Android open button</span><b>'+(vals.clk_android||0)+'</b></div>';
   var maxH=Math.max(1); hk.forEach(function(h){maxH=Math.max(maxH, vals[h.key]||0)});
   document.getElementById('hours').innerHTML=hk.map(function(h){
     var n=vals[h.key]||0;
