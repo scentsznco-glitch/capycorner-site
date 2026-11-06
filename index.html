@@ -33,5 +33,24 @@
 <a class="btn" id="android" style="display:none" href="intent://apps.apple.com/app/id6822118686#Intent;scheme=https;end">Open in browser</a>
 <a href="#" id="copy" class="copy">Copy link instead</a>
 </div></div></main>
-<script>(function(){var ua=navigator.userAgent||"";var inApp=/musical_ly|BytedanceWebview|TikTok|Instagram|FBAN|FBAV|Snapchat|Twitter/i.test(ua);var ios=/iPhone|iPad|iPod/i.test(ua);if(!inApp&&ios&&!/[?&]stay/.test(location.search)){location.replace("https://apps.apple.com/app/id6822118686");}if(inApp){document.getElementById("dl").style.display="none";document.getElementById("inapp").style.display="block";document.body.classList.add("ia");if(!ios){document.getElementById("android").style.display="inline-block";}}document.getElementById("copy").onclick=function(e){e.preventDefault();var u="https://apps.apple.com/app/id6822118686";(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){e.target.textContent="link copied!"},function(){prompt("Copy this link:",u)});};})();</script>
-<footer><a href="support.html">Support &amp; contact</a> · <a href="privacy.html">Privacy Policy</a><br>© 2026 Ryan Jones</footer></body></html>
+<script>(function(){
+var _ns="myj8hIO5K7rk0ugJVItKUbRHhbUHI4weSzyAkSKzNwc",_ab="https://abacus.jasoncameron.dev";
+function _hk(){try{var d=new Date(),f=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',hourCycle:'h23'});var p={};f.formatToParts(d).forEach(function(x){p[x.type]=x.value});return p.year+p.month+p.day+p.hour}catch(e){var x=new Date(Date.now()-5*3600e3);return String(x.getUTCFullYear())+String(x.getUTCMonth()+1).padStart(2,'0')+String(x.getUTCDate()).padStart(2,'0')+String(x.getUTCHours()).padStart(2,'0')}}
+function _hit(k){var u=_ab+'/hit/'+_ns+'/'+k;try{if(navigator.sendBeacon){/* sendBeacon is POST; Abacus wants GET */}}catch(e){}try{fetch(u,{method:'GET',mode:'no-cors',keepalive:!0,credentials:'omit'})}catch(e){try{new Image().src=u}catch(e2){}}}
+function _src(ua,inApp,ios){if(/musical_ly|BytedanceWebview|TikTok/i.test(ua))return 'tiktok';if(/Instagram/i.test(ua))return 'instagram';if(inApp)return 'inapp';if(ios)return 'ios';if(/Android/i.test(ua))return 'android';return 'desktop'}
+var _test=/[?&]_ct=1(?:&|$)/.test(location.search);var _pfx=_test?'t':'';
+
+var ua=navigator.userAgent||"";
+var inApp=/musical_ly|BytedanceWebview|TikTok|Instagram|FBAN|FBAV|Snapchat|Twitter/i.test(ua);
+var ios=/iPhone|iPad|iPod/i.test(ua);
+var willRedirect=!inApp&&ios&&!/[?&]stay/.test(location.search);
+var src=_src(ua,inApp,ios);
+_hit(_pfx+'v');
+_hit(_pfx+'s_'+src);
+_hit(_pfx+'h'+_hk());
+if(willRedirect)_hit(_pfx+'r');
+if(willRedirect){location.replace("https://apps.apple.com/app/id6822118686");}
+if(inApp){document.getElementById("dl").style.display="none";document.getElementById("inapp").style.display="block";document.body.classList.add("ia");if(!ios){document.getElementById("android").style.display="inline-block";}}
+document.getElementById("copy").onclick=function(e){e.preventDefault();_hit(_pfx+'c_copy');var u="https://apps.apple.com/app/id6822118686";(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){e.target.textContent="link copied!"},function(){prompt("Copy this link:",u)});};
+var _abtn=document.getElementById("android");if(_abtn)_abtn.addEventListener("click",function(){_hit(_pfx+"c_android")});
+})();</script>
